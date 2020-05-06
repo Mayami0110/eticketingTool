@@ -68,19 +68,19 @@ public class TestBase {
 		/*	DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			capabilities.setCapability(capabilityName, value);*/
 			System.setProperty("webdriver.chrome.driver",
-					strAbsolutepath + "Resources\\chromedriver2.exe");
+					strAbsolutepath + "BrowserJars\\chromedriver2.exe");
 			driver = new ChromeDriver();
 		}
 
 		else	if (browserName.equalsIgnoreCase("ff")) {
 			System.setProperty("webdriver.gecko.driver",
-					strAbsolutepath + "Resources\\geckodriver.exe");
+					strAbsolutepath + "BrowserJars\\geckodriver.exe");
 			driver = new FirefoxDriver();
 		}
 		
 		else if (browserName.equalsIgnoreCase("IE")) {
 			System.setProperty("webdriver.ie.driver",
-					strAbsolutepath + "Resources\\IEDriver.exe");
+					strAbsolutepath + "BrowserJars\\IEDriver.exe");
 			driver = new InternetExplorerDriver();
 		}
 		

@@ -54,7 +54,6 @@ public class ETicketReportsTest extends TestBase{
 	public void getCountForTotalApplicationsPendingApplicationWiseTest() {
 		
 		List<String> newls = eticketReportPage.getCountForTotalApplicationsPendingApplicationWise();
-
 		
 		
 		

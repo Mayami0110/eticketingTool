@@ -21,7 +21,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class SendEmailTo {
+public class SendEmailToWithAttachement {
 	private String from;
 
 	private String to;

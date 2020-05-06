@@ -63,7 +63,7 @@ public class ETicketReportsPage extends TestBase {
 		File scrFile = element.getScreenshotAs(OutputType.FILE);
 
 		try {
-			FileUtils.copyFile(scrFile, new File(strAbsolutepath + "\\Screenshot\\" + filename + ".JPEG"));
+			FileUtils.copyFile(scrFile, new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();

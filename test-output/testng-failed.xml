@@ -7,6 +7,7 @@
         <methods>
           <include name="setup"/>
           <include name="teardown"/>
+          <include name="getCountForTotalApplicationsPendingApplicationWiseTest"/>
           <include name="getScreenshotForTotalApplicationsPendingApplicationWiseTest"/>
         </methods>
       </class> <!-- com.qa.eticketing.testcases.ETicketReportsTest -->
