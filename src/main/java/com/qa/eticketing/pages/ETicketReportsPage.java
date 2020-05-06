@@ -109,7 +109,6 @@ public class ETicketReportsPage extends TestBase {
 		ls.add(PendingMCC.getText());
 		ls.add(PendingDCC.getText());
 		ls.add(PendingMobApp.getText());
-
 		ls.add(PendingDWMAEFMS.getText());
 		ls.add(PendingMISPortal.getText());
 

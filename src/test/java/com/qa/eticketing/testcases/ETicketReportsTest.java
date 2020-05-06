@@ -23,6 +23,7 @@ public class ETicketReportsTest extends TestBase{
 	String PendingChenchuCount,PendingMCCCount,PendingDCCCount,PendingMobAppCount,
 	PendingDWMAEFMSCount,
 	PendingMISPortalCount;
+	int PendingTotalCount;
 	public ETicketReportsTest()
 	{
 		super();
@@ -63,10 +64,14 @@ public class ETicketReportsTest extends TestBase{
 		PendingMobAppCount = newls.get(3);
 		PendingDWMAEFMSCount = newls.get(4);
 		PendingMISPortalCount = newls.get(5);
+		
+		PendingTotalCount = Integer.parseInt(PendingChenchuCount)+Integer.parseInt(PendingMCCCount)+
+				Integer.parseInt(PendingDCCCount)+Integer.parseInt(PendingMobAppCount)+
+				Integer.parseInt(PendingDWMAEFMSCount)+Integer.parseInt(PendingMISPortalCount);
 
 		SendEmailToWithAttachement sendEmailtTo = new SendEmailToWithAttachement();
 		sendEmailtTo.SendMailMethod(PendingChenchuCount, PendingMCCCount, 
-				PendingDCCCount, PendingMobAppCount, PendingDWMAEFMSCount, PendingMISPortalCount);
+				PendingDCCCount, PendingMobAppCount, PendingDWMAEFMSCount, PendingMISPortalCount , PendingTotalCount);
 	}
 	
 	

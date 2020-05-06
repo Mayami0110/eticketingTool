@@ -61,7 +61,8 @@ public class SendEmailToWithAttachement {
 	public void SendMailMethod(String PendingChenchuCount,String PendingMCCCount,String PendingDCCCount,
 			String PendingMobAppCount,
 			String PendingDWMAEFMSCount,
-			String PendingMISPortalCount) {
+			String PendingMISPortalCount,
+			int PendingTotalCount) {
 		
 		this.from = "mayank_mishra@cms.co.in";
 		this.to = "mayami0110@gmail.com";
@@ -80,7 +81,8 @@ public class SendEmailToWithAttachement {
 		this.messageBody += "<td>3.&nbsp;</td><td>DCC  	&nbsp;</td><td>"+PendingDCCCount+"&nbsp; </td><tr>";
 		this.messageBody += "<td>4.&nbsp;</td><td>Mobile Application &nbsp;</td><td>"+PendingMobAppCount+"&nbsp; </td><tr>";
 		this.messageBody += "<td>5.&nbsp;</td><td>DWMA EFMS &nbsp;</td><td>"+PendingDWMAEFMSCount+"&nbsp; </td><tr>";
-		this.messageBody += "<td>6.&nbsp;</td><td>MIS Portal &nbsp;</td><td>"+PendingMISPortalCount +" &nbsp; </td></tr><tr></body></html>";
+		this.messageBody += "<td>6.&nbsp;</td><td>MIS Portal &nbsp;</td><td>"+PendingMISPortalCount +" &nbsp; </td></tr><tr>";
+		this.messageBody += "<td>&nbsp;</td><td>Total Pending Count &nbsp;</td><td>"+PendingTotalCount +" &nbsp; </td></tr><tr></body></html>";
 		
 		
 		
