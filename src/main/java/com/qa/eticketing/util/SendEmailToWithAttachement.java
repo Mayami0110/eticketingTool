@@ -76,13 +76,13 @@ public class SendEmailToWithAttachement {
 		this.messageBody += "<html><body><h3><u> Total Applications Pending - Application Wise  :</u><h3> </body></html>";
 		this.messageBody += "<html> <head> </head> <body> <table border=\"1\" cellpadding=\"1\" cellspacing=\"1\"> <tr style=\"background-color: #a9c2e8;\">";
 		this.messageBody += "<td><strong>S No &nbsp;&nbsp;</strong></td><td><strong>Application	</strong></td><td><strong>Pending &nbsp;&nbsp;&nbsp; </strong></td><tr>";
-		this.messageBody += "<td>1.&nbsp;</td><td>Chenchu  	&nbsp;</td><td>" + PendingChenchuCount +"&nbsp; </td><tr>";
-		this.messageBody += "<td>2.&nbsp;</td><td>MCC  	&nbsp;</td><td>" + PendingMCCCount +"&nbsp; </td><tr>";
-		this.messageBody += "<td>3.&nbsp;</td><td>DCC  	&nbsp;</td><td>"+PendingDCCCount+"&nbsp; </td><tr>";
-		this.messageBody += "<td>4.&nbsp;</td><td>Mobile Application &nbsp;</td><td>"+PendingMobAppCount+"&nbsp; </td><tr>";
-		this.messageBody += "<td>5.&nbsp;</td><td>DWMA EFMS &nbsp;</td><td>"+PendingDWMAEFMSCount+"&nbsp; </td><tr>";
-		this.messageBody += "<td>6.&nbsp;</td><td>MIS Portal &nbsp;</td><td>"+PendingMISPortalCount +" &nbsp; </td></tr><tr>";
-		this.messageBody += "<tr style=\"background-color: #a9c2e8;\"><td></td><td><strong>Total Pending Count &nbsp;</strong></td><td><strong>"+PendingTotalCount +" &nbsp; </strong></td></tr><tr></body></html>";
+		this.messageBody += "<td>1.&nbsp;</td><td>Chenchu  	&nbsp;</td><td>&nbsp;" + PendingChenchuCount +"&nbsp; </td><tr>";
+		this.messageBody += "<td>2.&nbsp;</td><td>MCC  	&nbsp;</td><td>&nbsp;" + PendingMCCCount +"&nbsp; </td><tr>";
+		this.messageBody += "<td>3.&nbsp;</td><td>DCC  	&nbsp;</td><td>&nbsp;"+PendingDCCCount+"&nbsp; </td><tr>";
+		this.messageBody += "<td>4.&nbsp;</td><td>Mobile Application &nbsp;</td><td>&nbsp;"+PendingMobAppCount+"&nbsp; </td><tr>";
+		this.messageBody += "<td>5.&nbsp;</td><td>DWMA EFMS &nbsp;</td><td>&nbsp;"+PendingDWMAEFMSCount+"&nbsp; </td><tr>";
+		this.messageBody += "<td>6.&nbsp;</td><td>MIS Portal &nbsp;</td><td>&nbsp;"+PendingMISPortalCount +" &nbsp; </td></tr><tr>";
+		this.messageBody += "<tr style=\"background-color: #a9c2e8;\"><td></td><td><strong>Total Pending Count &nbsp;</strong></td><td><strong>&nbsp;"+PendingTotalCount +" &nbsp; </strong></td></tr><tr></body></html>";
 		
 		
 		
