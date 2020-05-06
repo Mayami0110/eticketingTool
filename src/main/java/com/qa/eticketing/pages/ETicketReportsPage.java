@@ -7,20 +7,25 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.qa.eticketing.base.TestBase;
 
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
 public class ETicketReportsPage extends TestBase {
 
-	
-
 	// @FindBy(id="ContentPlaceHolder1_gvdetailsnew") //
-	@FindBy(css = "#ContentPlaceHolder1_gvdetailsnew")
+	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_Receipt\"]/div/div/div[2]/div[1]")
 	WebElement TotalApplicationsPendingApplicationWise;
 
 	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"Chenchu\")]/following-sibling::td/a")
@@ -49,9 +54,8 @@ public class ETicketReportsPage extends TestBase {
 
 	public void getScreenshotForTotalApplicationsPendingApplicationWise() {
 
-		
-		
 		getScreenshot(TotalApplicationsPendingApplicationWise, "TotalApplicationsPendingApplicationWise2");
+		getScreenshot("e-TicketAbstract");
 
 		// return AddNewCustomerLabel.isDisplayed();
 	}
@@ -59,7 +63,7 @@ public class ETicketReportsPage extends TestBase {
 	public void getScreenshot(WebElement element, String filename) {
 
 		scrolToElement(element);
-		
+
 		File scrFile = element.getScreenshotAs(OutputType.FILE);
 
 		try {
@@ -72,23 +76,49 @@ public class ETicketReportsPage extends TestBase {
 		// return AddNewCustomerLabel.isDisplayed();
 	}
 
+/*	public void getScreenshot(String filename) {
+
+		// scrolToElement(element);
+
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+		try {
+			FileUtils.copyFile(scrFile, new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// return AddNewCustomerLabel.isDisplayed();
+	}*/
+
+	public void getScreenshot(String filename) {
+		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
+				.takeScreenshot(driver);
+		try {
+			ImageIO.write(screenshot.getImage(), "PNG", new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
+		} catch (IOException e) { // TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public List<String> getCountForTotalApplicationsPendingApplicationWise() {
 
 		List<String> ls = new ArrayList<String>();
 		ls.add(PendingChenchu.getText());
-		ls.add(PendingDCC.getText());		
 		ls.add(PendingMCC.getText());
-		ls.add(PendingMISPortal.getText());
-		ls.add(PendingDWMAEFMS.getText());
+		ls.add(PendingDCC.getText());
 		ls.add(PendingMobApp.getText());
 
+		ls.add(PendingDWMAEFMS.getText());
+		ls.add(PendingMISPortal.getText());
+
 		System.out.println(ls);
-		
+
 		Set<String> st = new HashSet<String>(ls);
 		System.out.println(st);
 
 		return ls;
-
 
 	}
 

@@ -56,9 +56,15 @@ public class SendEmailTo {
 
 	private Authenticator authenticator;
 	
-	String PendingChenchuCount,PendingMCCCount,PendingDCCCount,PendingMobAppCount,PendingDWMAEFMSCount,PendingMISPortalCount;
+	String PendingChenchuCount,PendingMCCCount,PendingDCCCount,PendingMobAppCount,
+	PendingDWMAEFMSCount,
+	PendingMISPortalCount;
 
-	public void SendMailMethod() {
+	public void SendMailMethod(	String PendingChenchuCount,String PendingMCCCount,String PendingDCCCount,
+			String PendingMobAppCount,
+			String PendingDWMAEFMSCount,
+			String PendingMISPortalCount
+) {
 		
 		this.from = "mayank_mishra@cms.co.in";
 		this.to = "mayami0110@gmail.com";
@@ -94,9 +100,6 @@ public class SendEmailTo {
 	///	this.fileName = this.strFilePath + "HISAutomationReport.xls";
 		
 		
-		
-		
-		
 		this.host = "mail.cms.co.in";
 		this.port = "587";
 		this.authenticator = new SMTPAuthenticator();
@@ -105,6 +108,9 @@ public class SendEmailTo {
 		this.properties.put("mail.smtp.starttls.enable", "false");
 		this.properties.put("mail.smtp.port", this.port);
 		this.properties.put("mail.smtp.auth", "true");
+	
+		performTask();
+		
 	}
 
 	public void sendMail(String from, String to2, String cc2, String subject, String messageBody, String fileName) {
@@ -119,13 +125,13 @@ public class SendEmailTo {
 			this.messageBodyPart = (BodyPart) new MimeBodyPart();
 			this.messageBodyPart.setContent(messageBody, "text/html");
 			this.multipart.addBodyPart(this.messageBodyPart);
-			 messageBodyPart = new MimeBodyPart();
+			/* messageBodyPart = new MimeBodyPart();
 	         DataSource fds = new FileDataSource(
 	            "F:\\WorkSpace\\TESTProject\\eticketingTool\\Screenshot\\TotalApplicationsPendingApplicationWise2.png");
 
 	         messageBodyPart.setDataHandler(new DataHandler(fds));
 	         messageBodyPart.setHeader("Content-ID", "<image>");
-	         multipart.addBodyPart(messageBodyPart);
+	         multipart.addBodyPart(messageBodyPart);*/
 			this.message.setContent(this.multipart);
 			Transport.send((Message) this.message);
 			System.out.println("Message send successfully....");
@@ -138,11 +144,11 @@ public class SendEmailTo {
 		sendMail(this.from, this.to, this.cc, this.subject, this.messageBody, this.fileName);
 	}
 
-	public void SendMail() {
+	/*public void SendMail() {
 		SendMailMethod();
 		performTask();
 	}
-
+*/
 	class SMTPAuthenticator extends Authenticator {
 		private static final String SMTP_AUTH_USER = "mayank_mishra";
 

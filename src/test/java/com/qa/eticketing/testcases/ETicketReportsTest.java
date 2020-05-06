@@ -12,6 +12,7 @@ import com.qa.eticketing.pages.ETicketReportsPage;
 import com.qa.eticketing.pages.HomePage;
 import com.qa.eticketing.pages.LoginPage;
 import com.qa.eticketing.util.SendEmailTo;
+import com.qa.eticketing.util.SendEmailToWithAttachement;
 
 public class ETicketReportsTest extends TestBase{
 	
@@ -19,7 +20,9 @@ public class ETicketReportsTest extends TestBase{
 	HomePage homePage;
 	ETicketReportsPage eticketReportPage;
 	SendEmailTo sendEmailtTo;
-	
+	String PendingChenchuCount,PendingMCCCount,PendingDCCCount,PendingMobAppCount,
+	PendingDWMAEFMSCount,
+	PendingMISPortalCount;
 	public ETicketReportsTest()
 	{
 		super();
@@ -54,10 +57,16 @@ public class ETicketReportsTest extends TestBase{
 	public void getCountForTotalApplicationsPendingApplicationWiseTest() {
 		
 		List<String> newls = eticketReportPage.getCountForTotalApplicationsPendingApplicationWise();
-		
-		
-		
-		
+		PendingChenchuCount = newls.get(0);
+		PendingMCCCount = newls.get(1);
+		PendingDCCCount = newls.get(2);
+		PendingMobAppCount = newls.get(3);
+		PendingDWMAEFMSCount = newls.get(4);
+		PendingMISPortalCount = newls.get(5);
+
+		SendEmailToWithAttachement sendEmailtTo = new SendEmailToWithAttachement();
+		sendEmailtTo.SendMailMethod(PendingChenchuCount, PendingMCCCount, 
+				PendingDCCCount, PendingMobAppCount, PendingDWMAEFMSCount, PendingMISPortalCount);
 	}
 	
 	
@@ -65,8 +74,7 @@ public class ETicketReportsTest extends TestBase{
 	public void teardown() {
 		
 		
-		SendEmailTo sendEmailtTo = new SendEmailTo();
-		sendEmailtTo.SendMail();
+		
 		driver.quit();
 	}
 

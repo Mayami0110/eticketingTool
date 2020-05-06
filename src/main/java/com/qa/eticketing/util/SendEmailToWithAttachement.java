@@ -58,7 +58,10 @@ public class SendEmailToWithAttachement {
 	
 	String PendingChenchuCount,PendingMCCCount,PendingDCCCount,PendingMobAppCount,PendingDWMAEFMSCount,PendingMISPortalCount;
 
-	public void SendMailMethod() {
+	public void SendMailMethod(String PendingChenchuCount,String PendingMCCCount,String PendingDCCCount,
+			String PendingMobAppCount,
+			String PendingDWMAEFMSCount,
+			String PendingMISPortalCount) {
 		
 		this.from = "mayank_mishra@cms.co.in";
 		this.to = "mayami0110@gmail.com";
@@ -91,7 +94,7 @@ public class SendEmailToWithAttachement {
 		this.messageBody += "<html><body><h4><font color=\"blue\">Note: This is an auto-generated mail. </br></br></br></font> </h4></body></html>";
 		this.messageBody += "<html><body><h3> Thanks & Regards,</h3></body></html>";
 		this.messageBody += "<html><body><h3> QA Team </h3></body></html>";
-	///	this.fileName = this.strFilePath + "HISAutomationReport.xls";
+		this.fileName = "eTicketAbstract";
 		
 		
 		
@@ -105,6 +108,9 @@ public class SendEmailToWithAttachement {
 		this.properties.put("mail.smtp.starttls.enable", "false");
 		this.properties.put("mail.smtp.port", this.port);
 		this.properties.put("mail.smtp.auth", "true");
+		
+		performTask();
+
 	}
 
 	public void sendMail(String from, String to2, String cc2, String subject, String messageBody, String fileName) {
@@ -119,12 +125,12 @@ public class SendEmailToWithAttachement {
 			this.messageBodyPart = (BodyPart) new MimeBodyPart();
 			this.messageBodyPart.setContent(messageBody, "text/html");
 			this.multipart.addBodyPart(this.messageBodyPart);
-			 messageBodyPart = new MimeBodyPart();
-	         DataSource fds = new FileDataSource(
-	            "F:\\WorkSpace\\TESTProject\\eticketingTool\\Screenshot\\TotalApplicationsPendingApplicationWise2.png");
+			 messageBodyPart = (BodyPart) new MimeBodyPart();
+	         DataSource fds = new FileDataSource(strAbsolutepath + "\\Screenshot\\" + "e-TicketAbstract" + ".png");
 
 	         messageBodyPart.setDataHandler(new DataHandler(fds));
 	         messageBodyPart.setHeader("Content-ID", "<image>");
+			messageBodyPart.setFileName ( fileName );
 	         multipart.addBodyPart(messageBodyPart);
 			this.message.setContent(this.multipart);
 			Transport.send((Message) this.message);
@@ -138,10 +144,10 @@ public class SendEmailToWithAttachement {
 		sendMail(this.from, this.to, this.cc, this.subject, this.messageBody, this.fileName);
 	}
 
-	public void SendMail() {
+	/*public void SendMail() {
 		SendMailMethod();
 		performTask();
-	}
+	}*/
 
 	class SMTPAuthenticator extends Authenticator {
 		private static final String SMTP_AUTH_USER = "mayank_mishra";
