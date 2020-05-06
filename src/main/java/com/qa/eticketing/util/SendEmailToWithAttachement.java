@@ -66,7 +66,7 @@ public class SendEmailToWithAttachement {
 		
 		this.from = "mayank_mishra@cms.co.in";
 		this.to = "mayami0110@gmail.com";
-		this.cc = "mayami0110@gmail.com";
+		this.cc = "mayank_mishra@cms.co.in";
 		String dateTime = (new SimpleDateFormat("dd-MM-yyyy hh:mm a")).format(Calendar.getInstance().getTime());
 		String newfinalstatusText = "faf";
 		this.subject = "MGNREGS e Ticketing System Report - " + dateTime ;
@@ -82,7 +82,7 @@ public class SendEmailToWithAttachement {
 		this.messageBody += "<td>4.&nbsp;</td><td>Mobile Application &nbsp;</td><td>"+PendingMobAppCount+"&nbsp; </td><tr>";
 		this.messageBody += "<td>5.&nbsp;</td><td>DWMA EFMS &nbsp;</td><td>"+PendingDWMAEFMSCount+"&nbsp; </td><tr>";
 		this.messageBody += "<td>6.&nbsp;</td><td>MIS Portal &nbsp;</td><td>"+PendingMISPortalCount +" &nbsp; </td></tr><tr>";
-		this.messageBody += "<td>&nbsp;</td><td>Total Pending Count &nbsp;</td><td>"+PendingTotalCount +" &nbsp; </td></tr><tr></body></html>";
+		this.messageBody += "<tr style=\"background-color: #a9c2e8;\"><td></td><td><strong>Total Pending Count &nbsp;</strong></td><td><strong>"+PendingTotalCount +" &nbsp; </strong></td></tr><tr></body></html>";
 		
 		
 		
