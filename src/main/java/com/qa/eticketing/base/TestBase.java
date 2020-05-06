@@ -12,7 +12,9 @@ import java.util.concurrent.TimeUnit;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -23,6 +25,7 @@ import org.apache.commons.mail.ImageHtmlEmail;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 
 import com.qa.eticketing.util.TestUtil;
+import com.qa.eticketing.util.SendEmailTo;
 
 public class TestBase {
 
@@ -58,6 +61,8 @@ public class TestBase {
 		String browserName = prop.getProperty("browser");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
+			
+			
 			
 			System.setProperty("webdriver.chrome.silentOutput","true");
 		/*	DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -95,38 +100,14 @@ public class TestBase {
 	}
 	
 
-	public static void mailmethod() {
+	public void scrolToElement(WebElement element)
+	
+	{
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+        
 
-		SendMail();
-}
-
-	private static void SendMail() {
-		// TODO Auto-generated method stub
-		SendMailMethod();
-		performTask();
-	}
-
-	private static void performTask() {
-		// TODO Auto-generated method stub
 		
 	}
-
-	private static void SendMailMethod() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-class SMTPAuthenticator extends Authenticator {
-
-	private static final String SMTP_AUTH_USER = "mayank.mishra";
-	private static final String SMTP_AUTH_PASSWORD = "srit@123";
-
-	public PasswordAuthentication getPasswordAuthentication () {
-		String username = SMTP_AUTH_USER;
-		String password = SMTP_AUTH_PASSWORD;
-
-		return new PasswordAuthentication( username,  password );
-	}
-}
+	
 }

@@ -1,5 +1,7 @@
 package com.qa.eticketing.testcases;
 
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -9,12 +11,14 @@ import com.qa.eticketing.base.TestBase;
 import com.qa.eticketing.pages.ETicketReportsPage;
 import com.qa.eticketing.pages.HomePage;
 import com.qa.eticketing.pages.LoginPage;
+import com.qa.eticketing.util.SendEmailTo;
 
 public class ETicketReportsTest extends TestBase{
 	
 	LoginPage loginPage;
 	HomePage homePage;
 	ETicketReportsPage eticketReportPage;
+	SendEmailTo sendEmailtTo;
 	
 	public ETicketReportsTest()
 	{
@@ -46,10 +50,24 @@ public class ETicketReportsTest extends TestBase{
 
 		
 	}
+	@Test(priority=3)
+	public void getCountForTotalApplicationsPendingApplicationWiseTest() {
+		
+		List<String> newls = eticketReportPage.getCountForTotalApplicationsPendingApplicationWise();
+
+		
+		
+		
+		
+	}
+	
 	
 	@AfterMethod
 	public void teardown() {
-		mailmethod();
+		
+		
+		SendEmailTo sendEmailtTo = new SendEmailTo();
+		sendEmailtTo.SendMail();
 		driver.quit();
 	}
 
