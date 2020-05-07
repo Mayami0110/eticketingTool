@@ -3,8 +3,8 @@ package com.qa.eticketing.testcases;
 import java.util.List;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.qa.eticketing.base.TestBase;
@@ -29,7 +29,8 @@ public class ETicketReportsTest extends TestBase{
 		super();
 	}
 	
-	@BeforeMethod
+	//@BeforeMethod
+	@BeforeTest
 	public void setup() {
 		
 		initializations();
@@ -75,11 +76,11 @@ public class ETicketReportsTest extends TestBase{
 	}
 	
 	
-	@AfterMethod
+	//@AfterMethod
+	@AfterTest
 	public void teardown() {
 		
-		
-		
+	
 		driver.quit();
 	}
 

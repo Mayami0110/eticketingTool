@@ -2,7 +2,10 @@ package com.qa.eticketing.util;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -24,9 +27,14 @@ import javax.mail.internet.MimeMultipart;
 public class SendEmailToWithAttachement {
 	private String from;
 
+	private List<String> to;
+
+	private List<String> cc;
+	
+	/*
 	private String to;
 
-	private String cc;
+	private String cc;*/
 
 	private String subject;
 
@@ -38,12 +46,14 @@ public class SendEmailToWithAttachement {
 
 	private String port;
 
+	String strDataFileName = this.getClass().getSimpleName();
+	
 	public String strAbsolutepath = (new File("")).getAbsolutePath();
 
-	private String strDataPath = this.strAbsolutepath + "/data/";
+	private String strDataPath = this.strAbsolutepath + "\\src\\main\\java\\com\\qa\\eticketing\\testdata\\";
 
 	private String strFilePath = this.strAbsolutepath + "/TestResults/";
-
+	ReadDataFile readData = new ReadDataFile();
 	int rownumber = 1;
 
 	private Properties properties;
@@ -64,9 +74,16 @@ public class SendEmailToWithAttachement {
 			String PendingMISPortalCount,
 			int PendingTotalCount) {
 		
+		String name = new Object(){}.getClass().getEnclosingMethod().getName();
+		
 		this.from = "mayank_mishra@cms.co.in";
-		this.to = "mayami0110@gmail.com";
-		this.cc = "mayank_mishra@cms.co.in";
+		
+		to = FetchEmails(strDataFileName, "EMailForTo",  name);
+		cc = FetchEmails(strDataFileName, "EMailForCC", name);
+
+		
+		/*this.to = "mayami0110@gmail.com";
+		this.cc = "mayank_mishra@cms.co.in";*/
 		String dateTime = (new SimpleDateFormat("dd-MM-yyyy hh:mm a")).format(Calendar.getInstance().getTime());
 		String newfinalstatusText = "faf";
 		this.subject = "MGNREGS e Ticketing System Report - " + dateTime ;
@@ -114,14 +131,59 @@ public class SendEmailToWithAttachement {
 		performTask();
 
 	}
+	
+	
+	public List<String> FetchEmails(String strDataFileName, String strElement,String Methodname) 
+	{
+		List<String> array= new ArrayList();
 
-	public void sendMail(String from, String to2, String cc2, String subject, String messageBody, String fileName) {
+		try {
+			int columnCount = 0;
+			String[] Emails = new String[0];
+			int rowNumber = 1;
+			String strEmails = readData.readDataFile(strDataFileName, rowNumber, strElement , Methodname);
+
+			Emails = strEmails.split(";");
+			List<String> emailIds= Arrays.asList(Emails);
+
+			columnCount = emailIds.size();
+
+			for (int cnt = 0; cnt < columnCount; cnt++) 
+			{
+				String excelEmailValues = emailIds.get(cnt);
+				array.add(excelEmailValues);
+
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return array;
+	}
+
+
+
+	public void sendMail(String from, List<String> to2, List<String> cc2, String subject, String messageBody, String fileName) {
 		try {
 			Session session = Session.getDefaultInstance(this.properties, this.authenticator);
 			this.message = new MimeMessage(session);
 			this.message.setFrom((Address) new InternetAddress(from));
-			this.message.addRecipient(Message.RecipientType.TO, (Address) new InternetAddress(to2));
-			this.message.addRecipient(Message.RecipientType.CC, (Address) new InternetAddress(cc2));
+			
+		/*	this.message.addRecipient(Message.RecipientType.TO, (Address) new InternetAddress(to2));
+			this.message.addRecipient(Message.RecipientType.CC, (Address) new InternetAddress(cc2));*/
+
+			for (String string : to2) 
+			{
+				message.addRecipient ( Message.RecipientType.TO,
+						new InternetAddress ( string ) );            }
+
+			for (String string : cc2) 
+			{
+				message.addRecipient ( Message.RecipientType.CC,
+						new InternetAddress ( string ) );            }
+
+			
+			
 			this.message.setSubject(subject);
 			this.multipart = (Multipart) new MimeMultipart();
 			this.messageBodyPart = (BodyPart) new MimeBodyPart();
