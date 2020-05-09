@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
@@ -76,27 +77,27 @@ public class ETicketReportsPage extends TestBase {
 		// return AddNewCustomerLabel.isDisplayed();
 	}
 
-/*	public void getScreenshot(String filename) {
-
-		// scrolToElement(element);
-
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-
-		try {
-			FileUtils.copyFile(scrFile, new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// return AddNewCustomerLabel.isDisplayed();
-	}*/
+	/*
+	 * public void getScreenshot(String filename) {
+	 * 
+	 * // scrolToElement(element);
+	 * 
+	 * File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	 * 
+	 * try { FileUtils.copyFile(scrFile, new File(strAbsolutepath +
+	 * "\\Screenshot\\" + filename + ".png"));
+	 * 
+	 * } catch (IOException e) { e.printStackTrace(); }
+	 * 
+	 * // return AddNewCustomerLabel.isDisplayed(); }
+	 */
 
 	public void getScreenshot(String filename) {
 		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
 				.takeScreenshot(driver);
 		try {
-			ImageIO.write(screenshot.getImage(), "PNG", new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
+			ImageIO.write(screenshot.getImage(), "PNG",
+					new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
 		} catch (IOException e) { // TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -105,18 +106,51 @@ public class ETicketReportsPage extends TestBase {
 	public List<String> getCountForTotalApplicationsPendingApplicationWise() {
 
 		List<String> ls = new ArrayList<String>();
-		ls.add(PendingChenchu.getText());
-		ls.add(PendingMCC.getText());
-		ls.add(PendingDCC.getText());
-		ls.add(PendingMobApp.getText());
-		ls.add(PendingDWMAEFMS.getText());
-		ls.add(PendingMISPortal.getText());
+
+		try {
+			ls.add(PendingChenchu.getText());
+		} catch (Exception e) {
+			String Noelement = "0";
+			ls.add(Noelement);
+		}
+		try {
+			ls.add(PendingMCC.getText());
+		} catch (Exception e) {
+			String Noelement = "0";
+			ls.add(Noelement);
+		}
+		try {
+			ls.add(PendingDCC.getText());
+		} catch (Exception e) {
+			String Noelement = "0";
+			ls.add(Noelement);
+		}
+
+		try {
+			ls.add(PendingMobApp.getText());
+		} catch (Exception e) {
+			String Noelement = "0";
+			ls.add(Noelement);
+		}
+		try {
+			ls.add(PendingDWMAEFMS.getText());
+		} catch (Exception e) {
+			String Noelement = "0";
+			ls.add(Noelement);
+		}
+		try {
+			ls.add(PendingMISPortal.getText());
+
+		} catch (Exception e) {
+			String Noelement = "0";
+			ls.add(Noelement);
+		}
 
 		System.out.println(ls);
 
-		Set<String> st = new HashSet<String>(ls);
+	/*	Set<String> st = new HashSet<String>(ls);
 		System.out.println(st);
-
+*/
 		return ls;
 
 	}
