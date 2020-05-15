@@ -216,11 +216,11 @@ public class SendEmailToWithAttachement {
 	class SMTPAuthenticator extends Authenticator {
 		private static final String SMTP_AUTH_USER = "mayank_mishra";
 
-		private static final String SMTP_AUTH_PASSWORD = "Cms@12345";
+		private static final String SMTP_AUTH_PASSWORD = "Cms@123456";
 
 		public PasswordAuthentication getPasswordAuthentication() {
 			String username = "mayank_mishra";
-			String password = "Cms@12345";
+			String password = "Cms@123456"; // updated
 			return new PasswordAuthentication(username, password);
 		}
 	}
