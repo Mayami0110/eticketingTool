@@ -220,7 +220,7 @@ public class SendEmailToWithAttachement {
 
 		public PasswordAuthentication getPasswordAuthentication() {
 			String username = "mayank_mishra";
-			String password = "Cms@123456"; // updated
+			String password = "Cms@123456"; // updatedfd
 			return new PasswordAuthentication(username, password);
 		}
 	}
