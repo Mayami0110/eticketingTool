@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18173" started-at="2020-05-09T18:51:49Z" finished-at="2020-05-09T18:52:08Z">
+  <suite name="Default suite" duration-ms="38562" started-at="2020-05-18T06:51:58Z" finished-at="2020-05-18T06:52:36Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18173" started-at="2020-05-09T18:51:49Z" finished-at="2020-05-09T18:52:08Z">
+    <test name="Default test" duration-ms="38562" started-at="2020-05-18T06:51:58Z" finished-at="2020-05-18T06:52:36Z">
       <class name="com.qa.eticketing.testcases.ETicketReportsTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="setup" is-config="true" duration-ms="10877" started-at="2020-05-09T18:51:49Z" finished-at="2020-05-09T18:52:00Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="setup" is-config="true" duration-ms="12062" started-at="2020-05-18T06:51:58Z" finished-at="2020-05-18T06:52:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="getScreenshotForTotalApplicationsPendingApplicationWiseTest()[pri:2, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="getScreenshotForTotalApplicationsPendingApplicationWiseTest" duration-ms="5157" started-at="2020-05-09T18:52:00Z" finished-at="2020-05-09T18:52:05Z">
+        <test-method status="PASS" signature="getScreenshotForTotalApplicationsPendingApplicationWiseTest()[pri:2, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="getScreenshotForTotalApplicationsPendingApplicationWiseTest" duration-ms="4773" started-at="2020-05-18T06:52:10Z" finished-at="2020-05-18T06:52:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getScreenshotForTotalApplicationsPendingApplicationWiseTest -->
-        <test-method status="PASS" signature="getCountForTotalApplicationsPendingApplicationWiseTest()[pri:3, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="getCountForTotalApplicationsPendingApplicationWiseTest" duration-ms="1409" started-at="2020-05-09T18:52:05Z" finished-at="2020-05-09T18:52:07Z">
+        <test-method status="PASS" signature="getCountForTotalApplicationsPendingApplicationWiseTest()[pri:3, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="getCountForTotalApplicationsPendingApplicationWiseTest" duration-ms="21105" started-at="2020-05-18T06:52:15Z" finished-at="2020-05-18T06:52:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getCountForTotalApplicationsPendingApplicationWiseTest -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="teardown" is-config="true" duration-ms="692" started-at="2020-05-09T18:52:07Z" finished-at="2020-05-09T18:52:08Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.qa.eticketing.testcases.ETicketReportsTest@6a01e23]" name="teardown" is-config="true" duration-ms="610" started-at="2020-05-18T06:52:36Z" finished-at="2020-05-18T06:52:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->

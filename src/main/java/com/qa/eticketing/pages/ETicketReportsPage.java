@@ -61,7 +61,7 @@ public class ETicketReportsPage extends TestBase {
 		// return AddNewCustomerLabel.isDisplayed();
 	}
 
-	public void getScreenshot(WebElement element, String filename) {
+	/*public void getScreenshot(WebElement element, String filename) {
 
 		scrolToElement(element);
 
@@ -75,7 +75,7 @@ public class ETicketReportsPage extends TestBase {
 		}
 
 		// return AddNewCustomerLabel.isDisplayed();
-	}
+	}*/
 
 	/*
 	 * public void getScreenshot(String filename) {
@@ -92,7 +92,7 @@ public class ETicketReportsPage extends TestBase {
 	 * // return AddNewCustomerLabel.isDisplayed(); }
 	 */
 
-	public void getScreenshot(String filename) {
+	/*public void getScreenshot(String filename) {
 		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
 				.takeScreenshot(driver);
 		try {
@@ -101,7 +101,7 @@ public class ETicketReportsPage extends TestBase {
 		} catch (IOException e) { // TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	public List<String> getCountForTotalApplicationsPendingApplicationWise() {
 

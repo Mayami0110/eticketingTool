@@ -9,15 +9,18 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
@@ -25,6 +28,11 @@ import org.apache.commons.mail.ImageHtmlEmail;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 
 import com.qa.eticketing.util.TestUtil;
+
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
 import com.qa.eticketing.util.SendEmailTo;
 
 public class TestBase {
@@ -57,6 +65,8 @@ public class TestBase {
 	}
 
 	public static void initializations() {
+		
+		try {
 
 		String browserName = prop.getProperty("browser");
 
@@ -96,6 +106,13 @@ public class TestBase {
 
 		
 		driver.get(prop.getProperty("url"));
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			getScreenshot("ExceptionAtInitializations");
+			
+		}
 
 	}
 	
@@ -108,6 +125,33 @@ public class TestBase {
         
 
 		
+	}
+	
+	public void getScreenshot(WebElement element, String filename) {
+
+		scrolToElement(element);
+
+		File scrFile = element.getScreenshotAs(OutputType.FILE);
+
+		try {
+			FileUtils.copyFile(scrFile, new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// return AddNewCustomerLabel.isDisplayed();
+	}
+	
+	public static void getScreenshot(String filename) {
+		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
+				.takeScreenshot(driver);
+		try {
+			ImageIO.write(screenshot.getImage(), "PNG",
+					new File(strAbsolutepath + "\\Screenshot\\" + filename + ".png"));
+		} catch (IOException e) { // TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
