@@ -18,6 +18,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.apache.commons.io.FileUtils;
@@ -29,6 +30,7 @@ import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 
 import com.qa.eticketing.util.TestUtil;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -40,7 +42,7 @@ public class TestBase {
 	public static WebDriver driver;
 	public static Properties prop;
 
-	public static String strAbsolutepath = new File("").getAbsolutePath() +"\\";
+	public static String strAbsolutepath = new File("").getAbsolutePath() + "\\";
 
 	public TestBase() {
 
@@ -65,68 +67,65 @@ public class TestBase {
 	}
 
 	public static void initializations() {
-		
+
 		try {
 
-		String browserName = prop.getProperty("browser");
+			String browserName = prop.getProperty("browser");
 
-		if (browserName.equalsIgnoreCase("chrome")) {
-			
-			
-			
-			System.setProperty("webdriver.chrome.silentOutput","true");
-		/*	DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-			capabilities.setCapability(capabilityName, value);*/
-			System.setProperty("webdriver.chrome.driver",
-					strAbsolutepath + "BrowserJars\\chromedriver2.exe");
-			driver = new ChromeDriver();
-		}
+			if (browserName.equalsIgnoreCase("chrome")) {
 
-		else	if (browserName.equalsIgnoreCase("ff")) {
-			System.setProperty("webdriver.gecko.driver",
-					strAbsolutepath + "BrowserJars\\geckodriver.exe");
-			driver = new FirefoxDriver();
-		}
-		
-		else if (browserName.equalsIgnoreCase("IE")) {
-			System.setProperty("webdriver.ie.driver",
-					strAbsolutepath + "BrowserJars\\IEDriver.exe");
-			driver = new InternetExplorerDriver();
-		}
-		
-		else 
-		{
-			System.out.println("Invalid Browser !!!! Value from Config File  : " + browserName );
-		}
-		
-		driver.manage().window().maximize();
-		//driver.manage().deleteAllCookies();
-		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
+			//	System.setProperty("webdriver.chrome.silentOutput", "true");
 
-		
-		driver.get(prop.getProperty("url"));
-		}
-		catch(Exception e)
-		{
+				ChromeOptions opt = new ChromeOptions();
+			opt.addArguments("window-size=1400,800");
+
+			 opt.addArguments("--headless");
+
+				WebDriverManager.chromedriver().version("2.40").setup();
+
+				driver = new ChromeDriver(opt);
+
+			}
+
+			else if (browserName.equalsIgnoreCase("ff")) {
+				WebDriverManager.firefoxdriver().setup();
+
+				driver = new FirefoxDriver();
+			}
+
+			else if (browserName.equalsIgnoreCase("IE")) {
+				WebDriverManager.iedriver().setup();
+
+				driver = new InternetExplorerDriver();
+			}
+
+			else {
+				System.out.println("Invalid Browser !!!! Value from Config File  : " + browserName);
+			}
+
+			driver.manage().window().maximize();
+			driver.manage().deleteAllCookies();
+			driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
+
+			driver.get(prop.getProperty("url"));
+			
+		} catch (Exception e) {
 			System.out.println(e);
 			getScreenshot("ExceptionAtInitializations");
-			
+
 		}
 
 	}
-	
 
 	public void scrolToElement(WebElement element)
-	
-	{
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
-        
 
-		
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();", element);
+
 	}
-	
+
 	public void getScreenshot(WebElement element, String filename) {
 
 		scrolToElement(element);
@@ -142,7 +141,7 @@ public class TestBase {
 
 		// return AddNewCustomerLabel.isDisplayed();
 	}
-	
+
 	public static void getScreenshot(String filename) {
 		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
 				.takeScreenshot(driver);
@@ -153,5 +152,5 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

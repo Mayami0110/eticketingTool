@@ -55,7 +55,7 @@ public class ETicketReportsPage extends TestBase {
 
 	public void getScreenshotForTotalApplicationsPendingApplicationWise() {
 
-		getScreenshot(TotalApplicationsPendingApplicationWise, "TotalApplicationsPendingApplicationWise2");
+	//	getScreenshot(TotalApplicationsPendingApplicationWise, "TotalApplicationsPendingApplicationWise2");
 		getScreenshot("e-TicketAbstract");
 
 		// return AddNewCustomerLabel.isDisplayed();
