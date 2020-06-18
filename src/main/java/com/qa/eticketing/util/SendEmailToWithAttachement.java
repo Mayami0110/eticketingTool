@@ -96,7 +96,7 @@ public class SendEmailToWithAttachement {
 		this.messageBody += "<td>1.&nbsp;</td><td>Chenchu  	&nbsp;</td><td>&nbsp;" + PendingChenchuCount +"&nbsp; </td><tr>";
 		this.messageBody += "<td>2.&nbsp;</td><td>MCC  	&nbsp;</td><td>&nbsp;" + PendingMCCCount +"&nbsp; </td><tr>";
 		this.messageBody += "<td>3.&nbsp;</td><td>DCC  	&nbsp;</td><td>&nbsp;"+PendingDCCCount+"&nbsp; </td><tr>";
-		this.messageBody += "<td>4.&nbsp;</td><td>Mobile Application &nbsp;</td><td>&nbsp;"+PendingMobAppCount+"&nbsp; </td><tr>";
+		this.messageBody += "<td>4.&nbsp;</td><td>State EFMS &nbsp;</td><td>&nbsp;"+PendingMobAppCount+"&nbsp; </td><tr>";
 		this.messageBody += "<td>5.&nbsp;</td><td>DWMA EFMS &nbsp;</td><td>&nbsp;"+PendingDWMAEFMSCount+"&nbsp; </td><tr>";
 		this.messageBody += "<td>6.&nbsp;</td><td>MIS Portal &nbsp;</td><td>&nbsp;"+PendingMISPortalCount +" &nbsp; </td></tr><tr>";
 		this.messageBody += "<tr style=\"background-color: #a9c2e8;\"><td></td><td><strong>Total Pending Count &nbsp;</strong></td><td><strong>&nbsp;"+PendingTotalCount +" &nbsp; </strong></td></tr><tr></body></html>";

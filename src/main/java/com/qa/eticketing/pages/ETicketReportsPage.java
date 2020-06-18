@@ -39,7 +39,7 @@ public class ETicketReportsPage extends TestBase {
 	WebElement PendingDWMAEFMS;
 	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"MIS Portal\")]/following-sibling::td/a")
 	WebElement PendingMISPortal;
-	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"Mobile Application\")]/following-sibling::td/a")
+	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"State EFMS\")]/following-sibling::td/a")
 	WebElement PendingMobApp;
 
 	public ETicketReportsPage() {
