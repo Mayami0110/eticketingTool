@@ -39,8 +39,10 @@ public class ETicketReportsPage extends TestBase {
 	WebElement PendingDWMAEFMS;
 	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"MIS Portal\")]/following-sibling::td/a")
 	WebElement PendingMISPortal;
-	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"State EFMS\")]/following-sibling::td/a")
+	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"Mobile Application\")]/following-sibling::td/a")
 	WebElement PendingMobApp;
+	@FindBy(xpath = "//*[@id=\"ContentPlaceHolder1_gvdetailsnew\"]/tbody/tr/td[contains(text(),\"State EFMS\")]/following-sibling::td/a")
+	WebElement PendingStateEFMS;
 
 	public ETicketReportsPage() {
 		PageFactory.initElements(driver, this);
@@ -140,6 +142,13 @@ public class ETicketReportsPage extends TestBase {
 		}
 		try {
 			ls.add(PendingMISPortal.getText());
+
+		} catch (Exception e) {
+			String Noelement = "0";
+			ls.add(Noelement);
+		}
+		try {
+			ls.add(PendingStateEFMS.getText());
 
 		} catch (Exception e) {
 			String Noelement = "0";
