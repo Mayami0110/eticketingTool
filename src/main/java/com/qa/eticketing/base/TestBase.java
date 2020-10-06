@@ -28,14 +28,13 @@ import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.ImageHtmlEmail;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 
-import com.qa.eticketing.util.TestUtil;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 import com.qa.eticketing.util.SendEmailTo;
+import com.qa.eticketing.util.TestUtil;
 
 public class TestBase {
 
@@ -74,12 +73,14 @@ public class TestBase {
 
 			if (browserName.equalsIgnoreCase("chrome")) {
 
-			//	System.setProperty("webdriver.chrome.silentOutput", "true");
+				// System.setProperty("webdriver.chrome.silentOutput", "true");
 
 				ChromeOptions opt = new ChromeOptions();
-			opt.addArguments("window-size=1400,800");
 
-			 opt.addArguments("--headless");
+				opt.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+				opt.addArguments("window-size=1400,800");
+
+				opt.addArguments("--headless");
 
 				WebDriverManager.chromedriver().version("2.40").setup();
 
@@ -109,7 +110,7 @@ public class TestBase {
 			driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 
 			driver.get(prop.getProperty("url"));
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 			getScreenshot("ExceptionAtInitializations");
